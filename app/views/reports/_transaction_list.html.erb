@@ -1,0 +1,18 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Email</th>
+      <th>Transacciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transactions_by_user.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.transactions_count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

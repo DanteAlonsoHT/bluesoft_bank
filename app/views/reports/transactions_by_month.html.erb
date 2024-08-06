@@ -1,0 +1,17 @@
+<h1>Reporte para el mes de <%= Date::MONTHNAMES[@month] %></h1>
+
+<%= form_with url: reports_transactions_by_month_path, method: :get, local: true do %>
+  <div class="month-buttons">
+    <% 1.upto(12) do |month| %>
+      <%= link_to Date::MONTHNAMES[month], reports_transactions_by_month_path(month: month), remote: true, class: "btn btn-outline-primary" %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render partial: 'transaction_list' %>
+
+<script>
+  $(document).on('ajax:beforeSend', '.month-link', function() {
+    $('#transactions-list').html('<p>Cargando transacciones...</p>');
+  });
+</script>

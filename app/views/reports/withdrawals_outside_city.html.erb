@@ -1,0 +1,20 @@
+<h2>Reporte de Retiros Fuera de la Ciudad de Origen superiores al $1,000,000.00</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Email</th>
+      <th>Total Retiros Fuera de Ciudad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users_with_large_withdrawals.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= number_to_currency(user.total_withdrawals) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

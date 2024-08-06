@@ -1,0 +1,11 @@
+<div class="border shadow mb-3 p-3">
+  <h3>Usuario actual: <%= @current_user.name %></h3>
+
+  <%= form_with url: change_user_users_path, method: :post, local: true do %>
+    <div class="form-group">
+      <%= label_tag :user_id, "Seleccionar Usuario" %>
+      <%= select_tag :user_id, options_from_collection_for_select(@users, :id, :name, @current_user.id), class: "form-control" %>
+    </div>
+    <%= submit_tag "Cambiar Usuario", class: "btn btn-primary m-2" %>
+  <% end %>
+</div>

@@ -1,0 +1,22 @@
+<h1>Listado de Cuentas de <%= @current_user.name %> </h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Número de Cuenta</th>
+      <th>Tipo de Cuenta</th>
+      <th>Saldo</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td><%= account.account_number %></td>
+        <td><%= account.account_type_name&.capitalize %></td>
+        <td><%= number_to_currency(account.balance) %></td>
+        <td><%= link_to 'Ver Detalles', account_path(account) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

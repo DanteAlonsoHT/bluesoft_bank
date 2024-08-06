@@ -1,0 +1,25 @@
+<h2>Operaciones</h2>
+
+<%= form_with url: deposit_account_path(account), method: :post, local: true, class: 'form-inline m-4 p-4 border shadow d-flex justify-content-evenly' do |form| %>
+  <div>
+    <%= form.label :amount, 'Monto del Depósito' %>
+    <%= form.number_field :amount, step: 0.01 %>
+  </div>
+  <div>
+    <%= form.submit 'Depositar', class: 'btn btn-outline-success' %>
+  </div>
+<% end %>
+
+<%= form_with url: withdraw_account_path(account), method: :post, local: true, class: 'form-inline m-4 p-4 border shadow d-flex justify-content-evenly' do |form| %>
+  <div>
+    <%= form.label :amount, 'Monto del Retiro' %>
+    <%= form.number_field :amount, step: 0.01 %>
+  </div>
+  <div>
+    <%= form.label :location, 'Ubicación del Retiro' %>
+    <%= form.text_field :location %>
+  </div>
+  <div>
+    <%= form.submit 'Retirar', class: 'btn btn-outline-danger' %>
+  </div>
+<% end %>

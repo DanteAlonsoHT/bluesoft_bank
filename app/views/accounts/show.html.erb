@@ -1,0 +1,41 @@
+<h1>Detalles de la Cuenta</h1>
+
+<p>
+  <strong>Número:</strong> <%= @account.account_number %>
+</p>
+
+<p>
+  <strong>Tipo:</strong> <%= @account.account_type_name.capitalize %>
+</p>
+
+<p>
+  <strong>Origen:</strong> <%= @account.origin_city.capitalize %>
+</p>
+
+<p>
+  <strong>Saldo Actual:</strong> <%= number_to_currency(@account.current_balance) %>
+</p>
+
+<h2>Transacciones Recientes</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Tipo</th>
+      <th>Monto</th>
+      <th>Ubicación</th>
+      <th>Fecha</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @account.recent_movements.each do |transaction| %>
+      <tr>
+        <td><%= transaction.transaction_type_name.capitalize %></td>
+        <td><%= number_to_currency(transaction.amount) %></td>
+        <td><%= transaction.location %></td>
+        <td><%= transaction.created_at.strftime("%d/%m/%Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= render partial: 'transaction_form', locals: { account: @account } %>
